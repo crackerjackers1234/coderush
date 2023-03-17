@@ -34,6 +34,11 @@ app.get("/api/products/:id", (req, res) => {
 
 app.use("/api/users", userRoutes);
 
+// app.get("/ping", (req, res) => {
+//   console.log("ping endpoint called");
+//   res.status(200).json({ message: "pong" });
+// });
+
 app.use(notFound);
 
 app.use(errorHandler);
