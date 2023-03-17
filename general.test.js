@@ -6,7 +6,7 @@ test("test if the application is up and running", (done) => {
 
   const options = {
     hostname: "localhost",
-    port: process.env.SERVER_PORT,
+    port: process.env.SERVER_PORT || 3001,
     path: "/",
     method: "GET",
   };
