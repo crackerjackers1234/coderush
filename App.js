@@ -33,6 +33,7 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
+afalfj;
 
 app.use(notFound);
 
