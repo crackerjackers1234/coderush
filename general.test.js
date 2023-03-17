@@ -5,8 +5,10 @@
 // });
 
 test("test if the application is up and running", (done) => {
-  const app = require("./App"); // Replace with the path to your main program file
+  // Replace with the path to your main program file
   const request = require("supertest");
+  const express = require("express");
+  const app = express();
 
   request(app)
     .get("/")
