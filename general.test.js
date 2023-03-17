@@ -1,25 +1,31 @@
-const http = require("http");
-const dotenv = require("dotenv");
+test("test if the application is up and running", (done) => {
+  const http = require("http");
 
-dotenv.config({ path: path.resolve("./.env") });
+  const options = {
+    hostname: "localhost",
+    port: 5000,
+    path: "/",
+    method: "GET",
+  };
 
-const options = {
-  hostname: "localhost",
-  port: process.env.SERVER_PORT,
-  path: "/",
-  method: "GET",
-};
+  const req = http.request(options, (res) => {
+    expect(res.statusCode).toBe(200);
 
-const req = http.request(options, (res) => {
-  console.log(`statusCode: ${res.statusCode}`);
+    let data = "";
 
-  res.on("data", (d) => {
-    process.stdout.write(d);
+    res.on("data", (d) => {
+      data += d;
+    });
+
+    res.on("end", () => {
+      expect(data).toContain("Hello World");
+      done();
+    });
   });
-});
 
-req.on("error", (error) => {
-  console.error(error);
-});
+  req.on("error", (error) => {
+    done(error);
+  });
 
-req.end();
+  req.end();
+});
