@@ -1,9 +1,12 @@
 test("test if the application is up and running", (done) => {
   const http = require("http");
+  const dotenv = require("dotenv");
+
+  require("dotenv").config({ path: require("path").resolve("./.env") });
 
   const options = {
     hostname: "localhost",
-    port: 5000,
+    port: process.env.SERVER_PORT,
     path: "/",
     method: "GET",
   };
