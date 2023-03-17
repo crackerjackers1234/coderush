@@ -1,8 +1,11 @@
-const http = require("http");
+import "http";
+import dotenv from "dotenv";
+
+dotenv.config({ path: path.resolve("./.env") });
 
 const options = {
   hostname: "localhost",
-  port: 3000,
+  port: process.env.SERVER_PORT,
   path: "/",
   method: "GET",
 };
